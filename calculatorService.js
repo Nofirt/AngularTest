@@ -11,8 +11,8 @@
     service.$inject = ['$http'];
     function service($http) {
 
-        var data = [];
-
+        var data = {};
+        //var res = {};
         return {
             data: data,
             get: get,
@@ -25,29 +25,29 @@
             return $http({
                 method: 'GET',
                 url: 'http://localhost:3001/trainings'
-            }).then(function (result) {
-                _.each(result.data, function (d) {
-                    data.push(d);
-                })
+            }).then(function (res) {
+                _.assign(data, res.data);
             });
         }
 
         //Function that check training
         function checkTraining(user) {
             var result = [];
-            if (user.age != null && user.age != undefined) {
-                result = checkAge(user.age);
+            if (user.age && user.weight != null && user.age && user.weight != undefined) {
+                result = checkParams(user.age, user.weight);
             };
             return result;
         };
 
         //Function that check age to output training
-        function checkAge(age) {
-            var result = data[2];
-            if (age >= 40) {
-                result = data[1];
+        function checkParams(age, weight) {
+            var result = data.hardTraining;
+            if (age >= 40 && weight >= 100) {
+                result;
+            } else if (age >= 40 && weight >= 70) {
+                result = data.lightTraining;
             } else if (age >= 30) {
-                result = data[0];
+                result = data.middleTraining;
             }
             return result;
         }
