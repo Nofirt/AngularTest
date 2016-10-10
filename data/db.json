@@ -1,0 +1,19 @@
+{
+  "trainings": {
+    "lightTraining": [
+      "15 push-ups",
+      "15 crunches",
+      "5km run"
+    ],
+    "middleTraining": [
+      "25 push-ups",
+      "25 crunches",
+      "15km run"
+    ],
+    "hardTraining": [
+      "35 push-ups",
+      "35 crunches",
+      "25km run"
+    ]
+  }
+}
